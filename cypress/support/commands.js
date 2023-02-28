@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add("waitUntilVisible", (locator, timeout = 50000) => {
+    cy.get(locator, { timeout }).should("be.visible");
+  });
+  
+  
+  Cypress.Commands.add('selectDate',(locator,numberOfDays)=>{
+  cy.get(locator).each(date=>{
+  cy.wrap(date).eq(numberOfDays).click()
+  })
+  })
